@@ -9,12 +9,12 @@ public class SliceName {
 
         //Consumes name from user
         System.out.println("Please enter your full name: ");
-        String fullName = scan.nextLine();
+        String fullName = scan.nextLine().trim();
+
 
         //Splits into array
         String[] splitName = fullName.split(" ");
-
-        //Chooses whether the name has a middle name and prints accordingly
+//        //Chooses whether the name has a middle name and prints accordingly
         if (splitName.length == 2) {
             System.out.println("First name: " + splitName[0]);
             System.out.println("Middle name: (none)");

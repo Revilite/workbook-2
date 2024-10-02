@@ -8,13 +8,13 @@ public class ConcatName {
         Scanner scan = new Scanner(System.in);
         //Gathers user imput
         System.out.println("Please enter your name");
-        System.out.println("First Name:");
+        System.out.print("First Name:");
         String firstName = scan.nextLine();
-        System.out.println("Middle Name:");
+        System.out.print("\nMiddle Name:");
         String middleName = scan.nextLine();
-        System.out.println("Last Name:");
+        System.out.print("\nLast Name:");
         String lastName = scan.nextLine();
-        System.out.println("Suffix:");
+        System.out.print("\nSuffix:");
         String suffix = scan.nextLine();
 
         //Builds String
@@ -22,13 +22,13 @@ public class ConcatName {
 
         //If the name after trim is all white space, skip appending
         if (!middleName.trim().isEmpty()) {
-            sb.append(middleName).append(" ");
+            sb.append(middleName.trim()).append(" ");
         }
         if (!lastName.trim().isEmpty()) {
-            sb.append(lastName).append(" ");
+            sb.append(lastName.trim()).append(" ");
         }
         if (!suffix.trim().isEmpty()) {
-            sb.append(suffix).append("");
+            sb.append(suffix.trim()).append("");
         }
 
         //Print output
