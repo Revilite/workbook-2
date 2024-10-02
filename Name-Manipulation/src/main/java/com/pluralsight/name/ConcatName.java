@@ -1,4 +1,5 @@
 package com.pluralsight.name;
+
 import java.util.Scanner;
 
 
@@ -20,14 +21,14 @@ public class ConcatName {
         StringBuilder sb = new StringBuilder(firstName.trim()).append(" ");
 
         //If the name after trim is all white space, skip appending
-        if(!middleName.trim().isEmpty()){
-        sb.append(middleName).append(" ");
+        if (!middleName.trim().isEmpty()) {
+            sb.append(middleName).append(" ");
         }
-        if(!lastName.trim().isEmpty()){
-        sb.append(lastName).append(" ");
+        if (!lastName.trim().isEmpty()) {
+            sb.append(lastName).append(" ");
         }
-        if(!suffix.trim().isEmpty()){
-        sb.append(suffix).append("");
+        if (!suffix.trim().isEmpty()) {
+            sb.append(suffix).append("");
         }
 
         //Print output
