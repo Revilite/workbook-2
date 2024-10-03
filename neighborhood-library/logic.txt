@@ -1,0 +1,106 @@
+Group 5 Jacob Damian Keely Jontez Deiber
+Loops, Logic, and Classes
+
+enum - A special data type that allows you to create a set of constants (unchanging values).
+enum Months {
+    January,
+    February,
+    March,
+    ....
+}
+Months.January
+Months.values()
+
+String - A special variable containing a sequence of characters surrounded by double quotes, can be manipulated with String methods
+String hello = "Hello World";
+hello.toLowerCase();
+hello.contains();
+hello.equals();
+myStr1.equalsIgnoreCase(myStr2)
+
+Array[] - a list of a certain data type that is declared using square brackets []
+int[] numbers = {1, 2, 3, 4, 5, 6}
+numbers[0] = 25; //assigns value
+int x  = numbers[4 + 1] ; // access values
+numbers.length;  gets length of array (Starts from 0)
+
+Boolean - A true or false statement that is used for conditionals like loops or if statements
+boolean bool = true;
+
+Conditional Statements - tests for a boolean value
+true, false
+|| logical or,  && logical and
+== is equal to, < less than, > greater than, <= less than or equal to, >= greater than or equal to
+! not
+hello.contains("");
+
+if statements - a conditional statement that executes a block of code if the condition is true
+if (a == b){
+System.out.println("Hello World");
+}
+
+else if - a conditional statement that differs from an if conditional to execute a different block of code (must be paired with a if statement)
+if (a == b) {
+System.out.println("Hello World");
+}
+else if (a == c) {
+System.out.println("Goodbye World");
+}
+only one condition is chosen
+
+else - a part of an if statment, used to execute a block of code if either if statements or else ifs are not true (Does not need conditional statement)
+if (a == b){
+...
+}
+else {
+System.out.println("Goodbye :)");
+}
+only 1 else
+
+switch statement - a conditional statement that can accept a lot of different inputs to execute many different blocks of code
+int option = scanner.nextInt();
+switch (option) {
+    case 1:
+       { System.out.prinln("Something");}
+    case 2:
+        System.out.prinln("Nothing");
+    case 3:
+        System.out.println("Maybe?");
+    default:
+        System.out.println(":)");
+}
+
+String option2 = scanner.nextLine();
+switch (option2) {
+    case "C", "c":
+       Book.checkOut();
+    case "X", "x":
+        exit();
+}
+
+while loop - A type of loop that repeats if a conditional statement true (implement a counter so that it doesn't repeat endlessly!)
+int counter = 0;
+while(counter < 5) {
+System.out.println("Hello World");
+counter++;
+}
+
+do while loop - a type of while loop where the conditional is at the bottom, the code block will always execute at least once
+int counter = 0;
+do {
+System.out.println("Hello World");
+counter++;
+}
+while (count < 5)
+
+for loop - A type of loop that implements a counter inside of it.
+
+for(int i = 0; i < 5; i++){
+    System.out.println("Hello World");
+}
+
+for(int i = 0; i < array.length; i++){
+    System.out.println(array[i]); //prints out single value
+}
+
+

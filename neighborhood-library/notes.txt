@@ -1,0 +1,47 @@
+What should we be talking about for this afternoon
+
+(Brittany)
+- Accept input
+- Create a github repository
+- Know what a getter, setter and constructor is
+- How to declare variables
+- How to create and call methods
+- How to use an array
+- How to set a variable to boolean expression(false)
+- Print information that is stored and given from input
+- Get a list of books
+- How to call a different class to have multiple screens
+- How to navigate screens
+
+(Nicholas)
+Enum vs String for data control
+
+(Jacob)
+Scanner for user input
+
+(Alan)
+-Getters/Setters terminology
+-Setting constructor variables to be null initially
+-Scanner logic
+Hash maps
+
+(Anthony)
+Setters explained
+For extra credit, read library data from CSV file
+
+(Deiber)
+How to access data in Arrays
+
+
+(Tequila)
+Use an array to hold at least 20 books objects.
+
+(Keante)
+Making sure your code is readable and organized.
+
+(Siry)
+Read Me
+
+(Damian)
+how do we split the title, isbn, and the id
+.split?
