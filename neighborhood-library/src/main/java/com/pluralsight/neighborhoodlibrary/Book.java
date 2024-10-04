@@ -163,6 +163,10 @@ public class Book {
                             if (choiceLoop) {
                                 System.out.println("Invalid Book Name");
                             }
+                            else{
+                                System.out.println("Enjoy your book!");
+                                Thread.sleep(1000);
+                            }
                         }
                     }
                     case "X", "x": {
