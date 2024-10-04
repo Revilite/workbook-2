@@ -62,5 +62,10 @@ public class CellPhoneApplication {
         phone.dial(phone2.getPhoneNumber());
         phone2.dial(phone.getPhoneNumber());
 
+
+        //Exercise 3
+        CellPhone phone3 = new CellPhone(123123, "Z-flip", "Sprint", "(216)-857-5181", "Dorothy");
+        display(phone3);
+        phone3.dial(phone2);
     }
 }
