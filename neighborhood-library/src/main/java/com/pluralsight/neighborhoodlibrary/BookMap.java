@@ -134,11 +134,6 @@ public class BookMap {
 
             //To checkout
             if (choice.equals("1")) {
-                for (int i = 0; i < library.size(); i++) {
-                    if (!library.get("book" + i).isCheckedOut()) {
-                        System.out.println(library.get("book" + i).printAvailableBooks());
-                    }
-                }
                 System.out.println("""
                         \nWould you like to check out a book?
                         Check out book (C)
@@ -149,6 +144,11 @@ public class BookMap {
 
                 switch (checkOutBookChoice) {
                     case "C", "c": {
+                        for (int i = 0; i < library.size(); i++) {
+                            if (!library.get("book" + i).isCheckedOut()) {
+                                System.out.println(library.get("book" + i).printAvailableBooks());
+                            }
+                        }
                         boolean choiceLoop = true;
                         while (choiceLoop) {
                             System.out.println("What is the title of the book?");
@@ -174,12 +174,6 @@ public class BookMap {
                     }
                 }
             } else if (choice.equals("2")) {
-                for (int i = 0; i < library.size(); i++) {
-                    if (library.get("book" + i).isCheckedOut) {
-                        System.out.println(library.get("book" + i).printCheckoutBooks());
-                    }
-                }
-
                 System.out.println("""
                         Would you like to return a book?
                         Check in a book (C)
@@ -189,6 +183,11 @@ public class BookMap {
 
                 switch (returnBook) {
                     case "C", "c": {
+                        for (int i = 0; i < library.size(); i++) {
+                            if (library.get("book" + i).isCheckedOut) {
+                                System.out.println(library.get("book" + i).printCheckoutBooks());
+                            }
+                        }
                         System.out.println("What is the ID of the book?");
                         int id = scan.nextInt();
                         scan.nextLine();
@@ -198,6 +197,9 @@ public class BookMap {
                     }
                     case "X", "x": {
                         break;
+                    }
+                    default: {
+                        System.out.println("Im sorry I don't understand");
                     }
                 }
             } else if (choice.equals("3")) {

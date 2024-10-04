@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.File;
 import java.lang.Thread;
 import java.util.Scanner;
-
+import java.util.ArrayList;
 
 public class Book {
     int id;
@@ -22,7 +22,7 @@ public class Book {
     String greenForeground = "\033[1;32m";
 
 
-    public Book(int id, String isbn, String title, boolean isCheckedOut, String checkedOutTo) {
+    public Book(int id, String title, String isbn, boolean isCheckedOut, String checkedOutTo) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
@@ -105,32 +105,16 @@ public class Book {
     public static void main(String[] args) throws InterruptedException, IOException {
         Scanner scan = new Scanner(System.in);
 
-        //Pain and suffering
-        Book book1 = new Book(1, "978-1-23456-789-0", "The Whispering Woods", false, "");
-        Book book2 = new Book(2, "978-1-23456-790-7", "Shadows of the Past", false, "");
-        Book book3 = new Book(3, "978-1-23456-791-4", "Echoes of Tomorrow", false, "");
-        Book book4 = new Book(4, "978-1-23456-792-1", "The Last Ember", false, "");
-        Book book5 = new Book(5, "978-1-23456-793-8", "Journey to the Unknown", false, "");
-        Book book6 = new Book(6, "978-1-23456-794-5", "Beneath the Surface", false, "");
-        Book book7 = new Book(7, "978-1-23456-795-2", "A Dance with Destiny", false, "");
-        Book book8 = new Book(8, "978-1-23456-796-9", "The Clockmaker’s Secret", false, "");
-        Book book9 = new Book(9, "978-1-23456-797-6", "The Forgotten Realm", false, "");
-        Book book10 = new Book(10, "978-1-23456-789-0", "The Alchemist’s Apprentice", false, "");
-        Book book11 = new Book(11, "978-1-23456-798-3", "Veil of Illusions", false, "");
-        Book book12 = new Book(12, "978-1-23456-799-0", "The Edge of Infinity", false, "");
-        Book book13 = new Book(13, "978-1-23456-800-3", "Threads of Fate", false, "");
-        Book book14 = new Book(14, "978-1-23456-801-0", "The Serpent's Embrace", false, "");
-        Book book15 = new Book(15, "978-1-23456-802-7", "The Mirror's Reflection", false, "");
-        Book book16 = new Book(16, "978-1-23456-804-1", "A Heart in the Shadows", false, "");
-        Book book17 = new Book(17, "978-1-23456-805-8", "The Song of the Stars", false, "");
-        Book book18 = new Book(18, "978-1-23456-806-5", "The Hidden City", false, "");
-        Book book19 = new Book(19, "978-1-23456-807-2", "The Fire Within", false, "");
-        Book book20 = new Book(20, "978-1-23456-808-9", "The Luminous Path", false, "");
+        //scans CSV file and skips the heading row
+        ArrayList<Book> library = new ArrayList();
+        Scanner scanCSV = new Scanner(new File("X:/pluralsight/workbook-2/neighborhood-library/src/main/java/com/pluralsight/neighborhoodlibrary/books.csv"));
+        String[] tempValues = scanCSV.nextLine().split(",");
 
-        //Creation of the library
-        Book[] library = {book1, book2, book3, book4, book5, book6, book7, book8, book9, book10, book11, book12, book13,
-                book14, book15, book16, book17, book18, book19, book20};
-//        Scanner scanCSV = new Scanner(new File("X:/pluralsight/workbook-2/neighborhood-library/src/main/java/com/pluralsight/neighborhoodlibrary/books.csv"));
+        //creates library
+        while (scanCSV.hasNextLine()) {
+            tempValues = scanCSV.nextLine().split(",");
+            library.add(new Book(Integer.parseInt(tempValues[0]), tempValues[1], tempValues[2], Boolean.parseBoolean(tempValues[3]), tempValues[4]));
+        }
 
 
         boolean loop = true;
@@ -149,11 +133,7 @@ public class Book {
 
             //To checkout
             if (choice.equals("1")) {
-                for (int i = 0; i < library.length; i++) {
-                    if (!library[i].isCheckedOut()) {
-                        System.out.println(library[i].printAvailableBooks());
-                    }
-                }
+
                 System.out.println("""
                         \nWould you like to check out a book?
                         Check out book (C)
@@ -163,15 +143,20 @@ public class Book {
 
                 switch (checkOutBookChoice) {
                     case "C", "c": {
+                        for (int i = 0; i < library.size(); i++) {
+                            if (!library.get(i).isCheckedOut()) {
+                                System.out.println(library.get(i).printAvailableBooks());
+                            }
+                        }
                         boolean choiceLoop = true;
                         while (choiceLoop) {
                             System.out.println("What is the title of the book?");
                             String bookName = scan.nextLine().toLowerCase();
-                            for (int i = 0; i < library.length; i++) {
-                                if (library[i].getTitle().toLowerCase().contains(bookName)) {
+                            for (int i = 0; i < library.size(); i++) {
+                                if (library.get(i).getTitle().toLowerCase().contains(bookName)) {
                                     System.out.println("What is your name?");
                                     String name = scan.nextLine();
-                                    library[i].checkOut(name);
+                                    library.get(i).checkOut(name);
                                     choiceLoop = false;
                                 }
                             }
@@ -191,31 +176,34 @@ public class Book {
             //to put back
             else if (choice.equals("2")) {
                 System.out.println("");
-                for (int i = 0; i < library.length; i++) {
-                    if (library[i].isCheckedOut()) {
-                        System.out.println(library[i].printCheckoutBooks());
-                    }
-                }
-
-                System.out.println("Would you like to return a book?");
-                System.out.println("Check in a book (C)");
-                System.out.println("Go back to home screen (X)");
+                System.out.println("""
+                        Would you like to return a book?
+                        Check in a book (C)
+                        Go back to home screen (X)
+                        """);
                 String returnBook = scan.nextLine();
 
                 switch (returnBook) {
                     case "C", "c": {
+                        for (int i = 0; i < library.size(); i++) {
+                            if (library.get(i).isCheckedOut()) {
+                                System.out.println(library.get(i).printCheckoutBooks());
+                            }
+                        }
                         System.out.println("What is the ID of the book?");
                         int id = scan.nextInt();
                         scan.nextLine();
-                        library[id - 1].checkIn();
+                        library.get(id - 1).checkIn();
                         System.out.println("Thank you!");
                         Thread.sleep(1000, 0);
                     }
                     case "X", "x": {
                         break;
                     }
+                    default: {
+                        System.out.println("Im sorry I don't understand");
+                    }
                 }
-
             } else if (choice.equals("3")) {
                 loop = false;
             } else {
