@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.File;
 import java.lang.Thread;
 import java.util.Scanner;
-import java.util.HashMap;
 
 
 public class Book {
@@ -20,6 +19,7 @@ public class Book {
     String blueForeground = "\033[1;34m";
     String magentaForeground = "\033[1;35m";
     String redForeground = "\033[1;31m";
+    String greenForeground = "\033[1;32m";
 
 
     public Book(int id, String isbn, String title, boolean isCheckedOut, String checkedOutTo) {
@@ -94,24 +94,12 @@ public class Book {
     public String printCheckoutBooks() {
         StringBuilder sb = new StringBuilder();
         if (this.isCheckedOut == true) {
-            sb.append("Book Title: ").append(this.title);
-            sb.append(" Book Id: ").append(this.id);
-            sb.append(" Book ISBN: ").append(this.isbn);
-            sb.append(" Who has this book? ").append(this.checkedOutTo);
+            sb.append(blueForeground).append("Book Title: ").append(this.title).append(reset);
+            sb.append(magentaForeground).append(" Book Id: ").append(this.id).append(reset);
+            sb.append(redForeground).append(" Book ISBN: ").append(this.isbn).append(reset);
+            sb.append(greenForeground).append(" Who has this book? ").append(this.checkedOutTo).append(reset);
         }
         return sb.toString();
-    }
-
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", isbn='" + isbn + '\'' +
-                ", title='" + title + '\'' +
-                ", isCheckedOut=" + isCheckedOut +
-                ", checkedOutTo='" + checkedOutTo + '\'' +
-                '}';
     }
 
     public static void main(String[] args) throws InterruptedException, IOException {
@@ -142,16 +130,20 @@ public class Book {
         //Creation of the library
         Book[] library = {book1, book2, book3, book4, book5, book6, book7, book8, book9, book10, book11, book12, book13,
                 book14, book15, book16, book17, book18, book19, book20};
-        Scanner scanCSV = new Scanner(new File("X:/pluralsight/workbook-2/neighborhood-library/src/main/java/com/pluralsight/neighborhoodlibrary/books.csv"));
+//        Scanner scanCSV = new Scanner(new File("X:/pluralsight/workbook-2/neighborhood-library/src/main/java/com/pluralsight/neighborhoodlibrary/books.csv"));
 
 
         boolean loop = true;
         while (loop) {
-            System.out.println("Welcome to the Neighborhood Library!");
-            System.out.println("Please choose a option:");
-            System.out.println("Show Available Books (1)");
-            System.out.println("Show Checked Out Books (2)");
-            System.out.println("Exit Program (3)");
+            System.out.println("""
+                    Welcome to the Neighborhood Library!
+                    
+                    please choose a option:
+                    Show Available Books (1)
+                    Show Checked Out Books (2)
+                    Exit Program (3)
+                    
+                    """);
 
             String choice = scan.nextLine();
 
@@ -162,9 +154,11 @@ public class Book {
                         System.out.println(library[i].printAvailableBooks());
                     }
                 }
-                System.out.println("\n\nWould you like to check out a book?");
-                System.out.println("Check out book (C)");
-                System.out.println("Exit Available Books (X)");
+                System.out.println("""
+                        \nWould you like to check out a book?
+                        Check out book (C)
+                        Exit Available Books (X)
+                        """);
                 String checkOutBookChoice = scan.nextLine();
 
                 switch (checkOutBookChoice) {

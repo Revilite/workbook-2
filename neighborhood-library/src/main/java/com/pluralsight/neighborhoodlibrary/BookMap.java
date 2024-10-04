@@ -17,6 +17,7 @@ public class BookMap {
     String blueForeground = "\033[1;34m";
     String magentaForeground = "\033[1;35m";
     String redForeground = "\033[1;31m";
+    String greenForeground = "\033[1;32m";
 
 
     public BookMap(int id, String title, String isbn, boolean isCheckedOut, String checkedOutTo) {
@@ -91,10 +92,10 @@ public class BookMap {
     public String printCheckoutBooks() {
         StringBuilder sb = new StringBuilder();
         if (this.isCheckedOut == true) {
-            sb.append("Book Title: ").append(this.title);
-            sb.append(" Book Id: ").append(this.id);
-            sb.append(" Book ISBN: ").append(this.isbn);
-            sb.append(" Who has this book? ").append(this.checkedOutTo);
+            sb.append(blueForeground).append("Book Title: ").append(this.title).append(reset);
+            sb.append(magentaForeground).append(" Book Id: ").append(this.id).append(reset);
+            sb.append(redForeground).append(" Book ISBN: ").append(this.isbn).append(reset);
+            sb.append(greenForeground).append(" Who has this book? ").append(this.checkedOutTo).append(reset);
         }
         return sb.toString();
     }
@@ -106,8 +107,10 @@ public class BookMap {
         HashMap<String, BookMap> library = new HashMap<>();
         Scanner scanCSV = new Scanner(new File("X:/pluralsight/workbook-2/neighborhood-library/src/main/java/com/pluralsight/neighborhoodlibrary/books.csv"));
 
-        //creates the books object then loads into the library hashmap
+        //Skips the heading line of CSV
         String[] tempValues = scanCSV.nextLine().split(",");
+
+        //creates the books object then loads into the library hashmap
         int bookCounter = 0;
         while (scanCSV.hasNextLine()) {
             tempValues = scanCSV.nextLine().split(",");
@@ -119,13 +122,12 @@ public class BookMap {
         boolean mainLoop = true;
         while (mainLoop) {
             System.out.println("""
-                    Welcome to the Neighbrhood Library!
+                    Welcome to the Neighborhood Library!
                     
                     please choose a option:
                     Show Available Books (1)
                     Show Checked Out Books (2)
                     Exit Program (3)
-                    
                     """);
 
             String choice = scan.nextLine();
@@ -138,7 +140,7 @@ public class BookMap {
                     }
                 }
                 System.out.println("""
-                        \n\nWould you like to check out a book?
+                        \nWould you like to check out a book?
                         Check out book (C)
                         Exit Available Books (X)
                         """);
@@ -172,16 +174,17 @@ public class BookMap {
                     }
                 }
             } else if (choice.equals("2")) {
-                System.out.println("");
                 for (int i = 0; i < library.size(); i++) {
                     if (library.get("book" + i).isCheckedOut) {
                         System.out.println(library.get("book" + i).printCheckoutBooks());
                     }
                 }
 
-                System.out.println("Would you like to return a book?");
-                System.out.println("Check in a book (C)");
-                System.out.println("Go back to home screen (X)");
+                System.out.println("""
+                        Would you like to return a book?
+                        Check in a book (C)
+                        Go back to home screen (X)
+                        """);
                 String returnBook = scan.nextLine();
 
                 switch (returnBook) {
