@@ -1,0 +1,21 @@
+ID,Title,ISBN, isCheckedOut, checkedOutTo
+1,To Kill a Mockingbird,978-0-06-112008-4, false,N/A
+2,1984,978-0-452-28423-4, false,N/A
+3,Pride and Prejudice,978-1-59308-201-1, false,N/A
+4,The Great Gatsby,978-0-7432-7356-5, false,N/A
+5,Moby Dick,978-0-14-243724-7, false,N/A
+6,War and Peace,978-1-59308-036-9, false,N/A
+7,The Catcher in the Rye,978-0-316-76948-0, false,N/A
+8,The Hobbit,978-0-618-26030-0, false,N/A
+9,Harry Potter and the Sorcerer's Stone,978-0-590-35342-4, false,N/A
+10,The Lord of the Rings,978-0-618-00222-8, false,N/A
+11,The Alchemist,978-0-06-112241-5, false,N/A
+12,Jane Eyre,978-0-14-243720-9, false,N/A
+13,Brave New World,978-0-06-085052-4, false,N/A
+14,The Diary of a Young Girl,978-0-553-57713-8, false,N/A
+15,The Picture of Dorian Gray,978-0-14-143957-0, false,N/A
+16,The Brothers Karamazov,978-0-14-044924-2, false,N/A
+17,The Grapes of Wrath,978-0-14-303943-3, false,N/A
+18,The Handmaid's Tale,978-0-385-49081-6, false,N/A
+19,Crime and Punishment,978-0-14-303633-3, false,N/A
+20,Fahrenheit 451,978-0-7432-4722-1, false,N/A
