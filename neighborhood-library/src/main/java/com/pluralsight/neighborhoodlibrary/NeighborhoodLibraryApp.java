@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NeighborhoodLibraryApp {
-    public static void main(String[] args) throws FileNotFoundException, InterruptedException{
+    public static void main(String[] args) throws FileNotFoundException, InterruptedException {
         Scanner scan = new Scanner(System.in);
 
         //Main method string variables
@@ -60,9 +60,9 @@ public class NeighborhoodLibraryApp {
 
                 switch (checkOutBookChoice) {
                     case "C", "c": {
-                        for (int i = 0; i < library.size(); i++) {
-                            if (!library.get(i).isCheckedOut()) {
-                                System.out.println(library.get(i).printAvailableBook());
+                        for (Book b : library) {
+                            if (!b.isCheckedOut()) {
+                                System.out.println(b.printAvailableBook());
                             }
                         }
                         boolean choiceLoop = true;
@@ -70,14 +70,14 @@ public class NeighborhoodLibraryApp {
                             System.out.println("\nWhat is the title of the book?");
                             System.out.println("type \'Stop\' to go back");
                             String bookName = scan.nextLine().toLowerCase();
-                            if(bookName.equals("stop")){
+                            if (bookName.equals("stop")) {
                                 break;
                             }
-                            for (int i = 0; i < library.size(); i++) {
-                                if (library.get(i).getTitle().toLowerCase().contains(bookName)) {
+                            for (Book b : library) {
+                                if (b.getTitle().toLowerCase().contains(bookName)) {
                                     System.out.println("What is your name?");
                                     String name = scan.nextLine();
-                                    library.get(i).checkOut(name);
+                                    b.checkOut(name);
                                     choiceLoop = false;
                                 }
                             }
@@ -99,9 +99,9 @@ public class NeighborhoodLibraryApp {
             }
             //to put back
             else if (choice.equals("2")) {
-                for (int i = 0; i < library.size(); i++) {
-                    if (library.get(i).isCheckedOut()) {
-                        System.out.println(library.get(i).printCheckoutBook());
+                for (Book b : library) {
+                    if (b.isCheckedOut()) {
+                        System.out.println(b.printCheckoutBook());
                     }
                 }
                 System.out.println("");
